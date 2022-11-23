@@ -3,5 +3,6 @@ from django.urls import path, re_path
 import app.views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    re_path('', app.views.home, name='home'),
+    re_path('^$', app.views.home, name='home'),
+    re_path('^vpn/$', app.views.vpn_test, name='vpn'),
 ]

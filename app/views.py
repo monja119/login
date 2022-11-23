@@ -1,4 +1,5 @@
 import requests
+import openvpn_api
 from django.shortcuts import render, redirect
 from django.http import request, response, HttpResponse
 from app.forms import Authentificaton
@@ -29,3 +30,14 @@ def home(request):
             return render(request, 'pages/login.html', locals())
         else:
             return HttpResponse(f'Error : {response_auth.status_code}')
+
+
+def vpn_test(request):
+    vpn = openvpn_api.VPN('localhost', 800)
+    try:
+        if vpn.connect():
+            return HttpResponse('connected')
+        else:
+            return HttpResponse('Not connected')
+    except Exception as e:
+        return HttpResponse('Error : {}'.format(e))

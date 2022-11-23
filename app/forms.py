@@ -9,7 +9,7 @@ class Authentificaton(forms.Form):
                              required=True)
 
     password = forms.CharField(widget=forms.PasswordInput(attrs={
-                                   'placeholder': 'Password"',
+                                   'placeholder': 'Password',
                                    'class': 'form-control'
                                }),
                                required=True)
